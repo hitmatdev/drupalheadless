@@ -57,54 +57,45 @@ const IndexPage = ({siteMetadata}) => {
 
   return (
   <HomeLayout>
+
+
+
     
-    <div className="container  ">
-    <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div className="col-10 col-sm-8 col-lg-6">
-        <img src={HeroImage} className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"/>
+  <div className="container">
+
+    <div className="p-5 mb-4 bg-light rounded-3">
+      <div className="container-fluid py-5">
+        <h1 className="display-5 fw-bold">{HeroTitle}</h1>
+        <p className="col-md-8 fs-4">{HeroText} {sectionOneBody}</p>
       </div>
-      <div className="col-lg-6">
-        <h1 className="display-5 fw-bold lh-1 mb-3">{HeroTitle}</h1>
-        <p className="lead">{HeroText}</p>
-        <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href="/about" className="btn btn-outline-primary btn-lg px-4">{HeroTextCTA} </a>
+    </div>
+
+    <div className="row align-items-md-stretch">
+      <div className="col-md-6">
+        <div className="h-100 p-5 bg-light border-0 rounded-3">
+          <h2>{sectionOneTitle}</h2>
+          <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+          <button className="btn btn-outline-primary" type="button">Example button</button>
+        </div>
+      </div>
+      <div className="col-md-6">
+        <div className="h-100 p-5 bg-light border-0 rounded-3">
+          <h2>Add borders</h2>
+          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+          <button className="btn btn-outline-primary" type="button">Example button</button>
         </div>
       </div>
     </div>
-  </div>
-    
-    <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">Products</h2>
+
+    <div class="p-4">
+
+<h2 className="pb-2 border-bottom">Products</h2>
+
+</div>
     <ProductList></ProductList>
 
-</div>
-
-    
-  <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">Meet The Team</h2>
-
-    <div className="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
-      <div className="d-flex flex-column align-items-start gap-2">
-        <h3 className="fw-bold">{sectionOneTitle}</h3>
-        <p className="lead">{sectionOneBody}</p>
-        
-        <div className="input-group mb-6">
-  <input type="text" className="form-control" placeholder="Your email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-  
-</div>
-
-        <a href="#" className="btn btn-outline-primary btn-lg px-4 btn-lg">Stay Connected</a>
-      </div>
-   
-       
-<People></People>    
     </div>
-  </div>
-
-
-
-
-
+ 
 
   </HomeLayout>
 )

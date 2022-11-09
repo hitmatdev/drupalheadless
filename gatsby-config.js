@@ -3,13 +3,18 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `drupalcms`,
+    title: `Dunder Mifflin Pharma`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [{
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
-    }
+    },
+    resolve: `gatsby-source-drupal`,
+    options: {
+      baseUrl: `https://dev-dhcms.pantheonsite.io/`,
+      apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+    },
   }]
 };

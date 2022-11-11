@@ -2,38 +2,51 @@ import { useLocation } from '@reach/router';
 import {i18nText } from './config';
 
 
-const setLang = (event, lang) => {
+const setLang = (event, lang) => 
+{
+    if (typeof window !== 'undefined') 
+    {
+    
     localStorage.setItem("lang", lang);
-    var URLPrefix = getPath();
-    window.location.href = URLPrefix;
+     var URLPrefix = getPath();
+     window.location.href = URLPrefix;
+    }
   };
 
  
 const setDefaultLang = () => 
 {
-  
-   if (localStorage.getItem('lang') !== null) {
-       return localStorage.getItem("lang");
-   } else {
-    localStorage.setItem("lang", "en");
-       return "en";
-   }
+    if (typeof window !== 'undefined') 
+    {
+   
+        if (localStorage.getItem('lang') !== null) {
+            return localStorage.getItem("lang");
+        } else {
+            localStorage.setItem("lang", "en");
+            return "en";
+        }
+    }
  };
  
 const getLang = () => 
  {
-   
-    if (localStorage.getItem('lang') !== null) {
-        return localStorage.getItem("lang");
-    } else {
-        
-        return "en";
-    }
+    if (typeof window !== 'undefined') 
+    {
+            if (localStorage.getItem('lang') !== null) {
+                return localStorage.getItem("lang");
+            } else {
+                
+                return "en";
+            }
+    } 
   };
   
  const getPath = () => 
  {
 
+    if (typeof window !== 'undefined') 
+    {
+    
     var urlPrefix  = window.location.origin;
     var lang =  getLang();
     
@@ -49,17 +62,23 @@ const getLang = () =>
     
 
     return urlPrefix;
+    }
   
  };
 
 
  const getTranslation = (key) => 
  {
+    if (typeof window !== 'undefined') 
+    {
+    
+    
     var lang =  getLang();
 
     const trans = i18nText[lang][key];
    
     return trans;
+    }
 
   
  };

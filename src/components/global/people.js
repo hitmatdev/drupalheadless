@@ -1,36 +1,17 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { siteConfig } from "../../config";
+import {siteConfig}  from "../../utils/config";
 
-const People = ({ children }) => {
+const People = (props) => {
   
-    const data = useStaticQuery(graphql`
-    query {
-      allNodePeople {
-        edges {
-          node {
-            id
-            title
-            field_people_name
-            field_people_title
-            relationships {
-              field_people_image {
-                uri {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  const PeopleData = data.allNodePeople.edges;
 
-  console.log(data);
+  const PeopleData =  props.people.edges;
+
+
+
     return (
         
-        <div className="row row-cols-1 row-cols-sm-2 g-4">
+  <div className="row row-cols-1 row-cols-sm-2 g-4">
 
 {PeopleData.map((data, index) => {
 

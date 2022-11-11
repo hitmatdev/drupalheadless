@@ -15,6 +15,15 @@ module.exports = {
     options: {
       baseUrl: `https://dev-dhcms.pantheonsite.io/`,
       apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+      languageConfig: {
+        defaultLanguage: `en`,
+        enabledLanguages: [`en`, `fr`,`hi`],
+        translatableEntities: [`node--headless_page`,`node--inner_page`, `node--products`,`node--people`],
+          nonTranslatableEntities: [`file--file`],
+        
+      },
     },
   }]
 };
+
+//setting default language

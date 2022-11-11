@@ -2,46 +2,84 @@ import * as React from "react"
 import HomeLayout from "../components/layouts/HomeLayout";
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
-import { siteConfig } from "../config";
+import {siteConfig, Language}  from "../utils/config";
+import {getTranslation} from '../utils/linkUtils';
+
 import  People  from "../components/global/people";
 import ProductList  from "../components/global/products";
 
-
-
-const IndexPage = ({siteMetadata}) => {
-  
-  const data = useStaticQuery(graphql`
-    query {
-      nodeHeadlessPage(field_name: {eq: "Home"}) {
-        id
-        title
-        field_name
-        field_hero_text
-        field_hero_cta
-        field_hero_text_title
-        field_section_one_cta
-        field_section_one_body
-        field_section_one_title
-        relationships {
-          field_hero_image {
-            id
-            uri {
-              url
+export const query = graphql `
+    query ($langcode : String ){
+        nodeHeadlessPage(field_name: {eq: "Home"}, langcode: {eq: $langcode}) {
+          id
+          title
+          field_name
+          field_hero_text
+          field_hero_cta
+          field_hero_text_title
+          field_section_one_cta
+          field_section_one_body
+          field_section_one_title
+          relationships {
+            field_hero_image {
+              id
+              uri {
+                url
+              }
+            }
+            field_section_one_image {
+              id
+              uri {
+                url
+              }
             }
           }
-          field_section_one_image {
-            id
-            uri {
-              url
+        }
+        allNodeProducts(filter: {langcode: {eq: $langcode}}) {
+          edges {
+            node {
+              id
+              title
+              field_cta
+              field_tags_hcm
+              langcode
+              body {
+                value
+              }
+              relationships {
+                field_image_p {
+                  uri {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        allNodePeople(filter: {langcode: {eq: $langcode}}) {
+          edges {
+            node {
+              id
+              title
+              field_people_name
+              field_people_title
+              relationships {
+                field_people_image {
+                  uri {
+                    url
+                  }
+                }
+              }
             }
           }
         }
       }
-    }
-  `)
+  `
 
- 
 
+const IndexPage = ({ data }) => {
+  
+console.log("data",data);
 
   const HeroTitle = data.nodeHeadlessPage.field_hero_text_title;
   const HeroText = data.nodeHeadlessPage.field_hero_text;
@@ -74,14 +112,14 @@ const IndexPage = ({siteMetadata}) => {
   </div>
     
     <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">Products</h2>
-    <ProductList></ProductList>
+    <h2 className="pb-2 border-bottom">{getTranslation("products")}</h2>
+    <ProductList products={data.allNodeProducts}></ProductList>
 
 </div>
 
     
   <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">Meet The Team</h2>
+    <h2 className="pb-2 border-bottom">{getTranslation("meet_the_team")}</h2>
 
     <div className="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
       <div className="d-flex flex-column align-items-start gap-2">
@@ -97,7 +135,7 @@ const IndexPage = ({siteMetadata}) => {
       </div>
    
        
-<People></People>    
+<People people={data.allNodePeople}></People>    
     </div>
   </div>
 

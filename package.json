@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
+    "country-flag-icons": "^1.5.5",
+    "g": "^2.0.1",
     "gatsby": "^5.0.0",
     "gatsby-plugin-manifest": "^5.0.0",
     "gatsby-source-drupal": "^6.0.0",

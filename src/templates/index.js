@@ -3,7 +3,7 @@ import HomeLayout from "../components/layouts/HomeLayout";
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import {siteConfig, Language}  from "../utils/config";
-import {getTranslation} from '../utils/linkUtils';
+import {getTranslation, getPath} from '../utils/linkUtils';
 
 import  People  from "../components/global/people";
 import ProductList  from "../components/global/products";
@@ -79,7 +79,8 @@ export const query = graphql `
 
 const IndexPage = ({ data }) => {
   
-console.log("data",data);
+    const urlPrefix = getPath();
+
 
   const HeroTitle = data.nodeHeadlessPage.field_hero_text_title;
   const HeroText = data.nodeHeadlessPage.field_hero_text;
@@ -105,7 +106,7 @@ console.log("data",data);
         <h1 className="display-5 fw-bold lh-1 mb-3">{HeroTitle}</h1>
         <p className="lead">{HeroText}</p>
         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href="/about" className="btn btn-outline-primary btn-lg px-4">{HeroTextCTA} </a>
+          <a href={urlPrefix+"about-us"} className="btn btn-outline-primary btn-lg px-4">{HeroTextCTA} </a>
         </div>
       </div>
     </div>

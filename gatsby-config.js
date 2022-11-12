@@ -14,6 +14,7 @@ module.exports = {
     resolve: `gatsby-source-drupal`,
     options: {
       baseUrl: `https://dev-dhcms.pantheonsite.io/`,
+      preview : true,
       apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       languageConfig: {
         defaultLanguage: `en`,

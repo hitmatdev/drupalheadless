@@ -22,6 +22,10 @@ console.log("languageProps==>",languageProps);
 console.log("languageURL",languageURL);
 console.log("urlPrefix",urlPrefix);
 
+const En = urlPrefix +"/en/home/";
+const Fr = urlPrefix +"/fr/home/";
+const Hi=  urlPrefix +"/hi/home/";
+const about = languageURL+"about-us/"
 
  const companyName= data.site.siteMetadata.title;
     return (
@@ -32,7 +36,7 @@ console.log("urlPrefix",urlPrefix);
     <nav className="navbar navbar-light bg-primary d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ">
     <a className="navbar-brand my-0 mr-md-auto  font-weight-normal text-white" href={urlPrefix }>{companyName}</a>
     <ul className="nav nav-pills">
-        <li className="nav-item"><a href={languageURL +"about-us"} className="nav-link active"> About</a></li>
+        <li className="nav-item"><a href={about} className="nav-link active"> About Us</a></li>
         <li className="nav-item"><a href="#" className="nav-link active">Products</a></li>
         <li className="nav-item"><a href="#" className="nav-link active">People</a></li>
        
@@ -42,9 +46,9 @@ console.log("urlPrefix",urlPrefix);
             Language
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li className="dropdown-item"><a href={urlPrefix +"/en/home/"} className="nav-link text-small">English</a></li>
-          <li className="dropdown-item"><a href={urlPrefix +"/fr/home/"} className="nav-link text-small">French </a></li>
-          <li className="dropdown-item"><a href={urlPrefix +"/hi/home/"} className="nav-link text-small" >Hindi (हिन्दी) </a></li>
+          <li className="dropdown-item"><a href={En} className="nav-link text-small">English</a></li>
+          <li className="dropdown-item"><a href={Fr} className="nav-link text-small">French </a></li>
+          <li className="dropdown-item"><a href={Hi} className="nav-link text-small" >Hindi (हिन्दी) </a></li>
 
 
  

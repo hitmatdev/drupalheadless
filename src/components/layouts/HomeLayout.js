@@ -19,6 +19,9 @@ var languageURL =languageProps.langURL;
 var urlPrefix = languageProps.URLPrefix;
 
 console.log("languageProps==>",languageProps);
+console.log("languageURL",languageURL);
+console.log("urlPrefix",urlPrefix);
+
 
  const companyName= data.site.siteMetadata.title;
     return (

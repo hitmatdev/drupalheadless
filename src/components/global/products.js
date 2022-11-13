@@ -24,7 +24,7 @@ return (
         <div className="card-body">
           <h5 className="card-title">{data.node.title}</h5>
           <p className="card-text">{data.node.body.value}</p>
-          <a href="#" className="btn btn-outline-primary">{data.node.field_cta}</a>
+          <a href={"/"+data.node.langcode+"/"+data.node.field_product_slug} className="btn btn-outline-primary">{data.node.field_cta}</a>
         </div>
     </div>
   </div>

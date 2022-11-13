@@ -43,6 +43,7 @@ export const query = graphql `
               title
               field_cta
               field_tags_hcm
+              field_product_slug
               langcode
               body {
                 value
@@ -64,6 +65,7 @@ export const query = graphql `
               title
               field_people_name
               field_people_title
+              field_people_slug
               langcode
               relationships {
                 field_people_image {

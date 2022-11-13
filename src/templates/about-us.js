@@ -4,27 +4,27 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import { siteConfig } from "../utils/config";
 import ProductList  from "../components/global/products";
+import {getTranslation, getPath, getURLPath} from '../utils/linkUtils';
 
 
-const AboutUs = ({ data }) => {
+const AboutUs = ({ data, pageContext }) => {
 
  const allNodeInnerPageData = data.allNodeInnerPage.edges[0].node;
-
-
-  const HeroTitle = allNodeInnerPageData.field_inner_hero_title;
-  const HeroText = allNodeInnerPageData.field_inner_hero_body;
+ const HeroTitle = allNodeInnerPageData.field_inner_hero_title;
+ const HeroText = allNodeInnerPageData.field_inner_hero_body;
   
-  const HeroImage = siteConfig.assetURL+allNodeInnerPageData.relationships.field_inner_hero_image.uri.url;
+ const HeroImage = siteConfig.assetURL+allNodeInnerPageData.relationships.field_inner_hero_image.uri.url;
   
-  const PageSection = allNodeInnerPageData.field_inner_section_title;
-  const PageSectionBody = allNodeInnerPageData.field_inner_section_body;
+ const PageSection = allNodeInnerPageData.field_inner_section_title;
+ const PageSectionBody = allNodeInnerPageData.field_inner_section_body;
 
+ const languageProps = {"langcode" : pageContext.langcode, "langURL" : getURLPath()+"/"+pageContext.langcode+"/","URLPrefix":getURLPath()};
 
   
   console.log("allNodeInnerPageData",allNodeInnerPageData);
 
   return (
-  <HomeLayout>
+<HomeLayout languageProps ={languageProps}>
 
 <div className="container  ">
     <div className="row flex-lg-row-reverse align-items-center g-5 py-5">

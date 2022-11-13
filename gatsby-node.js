@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   
   const { createPage } = actions
-  const BlogTemplate = path.resolve('src/templates/blog.js')
+  const PeopleTemplate = path.resolve('src/templates/people.js')
   const ProductTemplate = path.resolve('src/templates/product.js')
 
   const AboutUsTemplate = path.resolve('src/templates/about-us.js')
@@ -21,49 +21,88 @@ exports.createPages = async ({ graphql, actions }) => {
   
   const queryResult = await graphql(`
    query{
-      allNodeProducts {
-        edges {
-          node {
-            id
-            title
-            field_cta
-            field_tags_hcm
-          }
-        }
+    allNodeHeadlessPage {
+      nodes {
+        field_slug
+        langcode
       }
-    } 
+    }
+    allNodePeople {
+      nodes {
+        field_people_slug
+        langcode
+      }
+    }
+    allNodeProducts {
+      nodes {
+        langcode
+        field_product_slug
+      }
+    }
+    allNodeInnerPage {
+      nodes {
+        langcode
+        field_inner_slug
+      }
+    }
+  }
   `)
 
   if (queryResult.errors) {
     throw queryResult.errors
   }
 
-  
-  queryResult.data.allNodeProducts.edges.forEach((node) => { 
-    
+  const { createRedirect } = actions
+  createRedirect({ fromPath: '/', toPath: '/en/home/', isPermanent: true })
 
-    
-    createPage({
-      path: "/product/"+node.node.title,
+  
+  queryResult.data.allNodeProducts.nodes.forEach((node) => 
+  { 
+  createPage({
+      path: "/"+node.langcode+"/"+node.field_product_slug,
       component: ProductTemplate,
-      context: { story:node},
+      context: {langcode: node.langcode },
 
     })
-
-    
+  
   })
 
-  actions.createPage({ path: '/', component: IndexTemplate, context: { langcode: lang.English}})
-  actions.createPage({ path: '/fr/', component: IndexTemplate, context: { langcode: lang.French}})
-  actions.createPage({ path: '/hi/', component: IndexTemplate, context: { langcode: lang.Hindi}})
+  queryResult.data.allNodePeople.nodes.forEach((node) => 
+  { 
+  createPage({
+      path: "/"+node.langcode+"/"+node.field_people_slug,
+      component: PeopleTemplate,
+      context: {langcode: node.langcode },
 
+    })
+  
+  })
 
-  actions.createPage({ path: '/about-us/', component: AboutUsTemplate, context: { langcode: lang.English}})
-  actions.createPage({ path: '/fr/about-us/', component: AboutUsTemplate, context: { langcode: lang.French}})
-  actions.createPage({ path: '/hi/about-us/', component: AboutUsTemplate, context: { langcode: lang.Hindi}})
+  queryResult.data.allNodeHeadlessPage.nodes.forEach((node) => 
+  { 
+  createPage({
+      path: "/"+node.langcode+"/"+node.field_slug,
+      component: IndexTemplate,
+      context: {langcode: node.langcode },
 
+    })
+  
+  })
+
+  queryResult.data.allNodeInnerPage.nodes.forEach((node) => 
+  { 
+  createPage({
+      path: "/"+node.langcode+"/"+node.field_inner_slug,
+      component: AboutUsTemplate,
+      context: { langcode: node.langcode },
+
+    })
+  
+  })
 
 
 }
+
+
 
 

@@ -3,7 +3,7 @@ import HomeLayout from "../components/layouts/HomeLayout";
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import {siteConfig, Language}  from "../utils/config";
-import {getTranslation, getPath} from '../utils/linkUtils';
+import {getTranslation, getPath, getURLPath} from '../utils/linkUtils';
 
 import  People  from "../components/global/people";
 import ProductList  from "../components/global/products";
@@ -20,6 +20,7 @@ export const query = graphql `
           field_section_one_cta
           field_section_one_body
           field_section_one_title
+          langcode
           relationships {
             field_hero_image {
               id
@@ -63,6 +64,7 @@ export const query = graphql `
               title
               field_people_name
               field_people_title
+              langcode
               relationships {
                 field_people_image {
                   uri {
@@ -77,25 +79,24 @@ export const query = graphql `
   `
 
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, pageContext }) => {
   
-    const urlPrefix = getPath();
+const urlPrefix = "";
+
 
 
   const HeroTitle = data.nodeHeadlessPage.field_hero_text_title;
   const HeroText = data.nodeHeadlessPage.field_hero_text;
   const HeroTextCTA = data.nodeHeadlessPage.field_hero_cta;
   const HeroImage = siteConfig.assetURL+data.nodeHeadlessPage.relationships.field_hero_image.uri.url;
-  
   const sectionOneTitle = data.nodeHeadlessPage.field_section_one_title;
   const sectionOneBody = data.nodeHeadlessPage.field_section_one_body;
-
+  
+  const languageProps = {"langcode" : pageContext.langcode, "langURL" : getURLPath()+"/"+pageContext.langcode+"/","URLPrefix":getURLPath()};
 
   
-  console.log("siteConfig",siteConfig);
-
   return (
-  <HomeLayout>
+  <HomeLayout languageProps ={languageProps}>
     
     <div className="container  ">
     <div className="row flex-lg-row-reverse align-items-center g-5 py-5">

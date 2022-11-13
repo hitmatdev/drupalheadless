@@ -10,7 +10,7 @@ const Products = ({ pageContext }) => {
    <HomeLayout>
 
     <div className="container">
-       <h1> {pageContext.story.node.title}</h1>
+       <h1> { /*pageContext.story.node.title */} Product Page</h1>
 
     </div>
    </HomeLayout>

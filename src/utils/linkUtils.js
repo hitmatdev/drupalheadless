@@ -66,6 +66,17 @@ const getLang = () =>
   
  };
 
+ const getURLPath = () => 
+ {
+
+    if (typeof window !== 'undefined') 
+    {
+    
+    var urlPrefix  = window.location.origin;
+    return urlPrefix;
+    }
+  
+ };
 
  const getTranslation = (key) => 
  {
@@ -86,4 +97,4 @@ const getLang = () =>
 
   const Language = getLang();
   
-  export {setLang, getLang, Language, getTranslation, getPath}
+  export {setLang, getLang, Language, getTranslation, getPath, getURLPath}

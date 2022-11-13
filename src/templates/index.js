@@ -83,7 +83,6 @@ export const query = graphql `
 
 const IndexPage = ({ data, pageContext }) => {
   
-const urlPrefix = "";
 
 
 
@@ -109,7 +108,7 @@ const urlPrefix = "";
         <h1 className="display-5 fw-bold lh-1 mb-3">{HeroTitle}</h1>
         <p className="lead">{HeroText}</p>
         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href={urlPrefix+"about-us"} className="btn btn-outline-primary btn-lg px-4">{HeroTextCTA} </a>
+          <a href="../about-us" className="btn btn-outline-primary btn-lg px-4">{HeroTextCTA} </a>
         </div>
       </div>
     </div>

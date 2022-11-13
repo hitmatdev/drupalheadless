@@ -14,9 +14,10 @@ const HomeLayout = ({children , languageProps}) => {
   `)
   
 var languageURL =languageProps.langURL;
-var homePage = languageProps.langURL+"home/";
 const about = languageURL+"about-us/"
 const langCode = languageProps.langcode;
+var homePage ="/"+langCode+"/home/";
+
 
  const companyName= data.site.siteMetadata.title;
     return (

@@ -1,7 +1,5 @@
 import React from "react";
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import { useLocation } from '@reach/router';
-import { setLang, getPath, getTranslation} from '../../utils/linkUtils';
+import {useStaticQuery, graphql } from 'gatsby';
 
 const HomeLayout = ({children , languageProps}) => {
   
@@ -16,16 +14,9 @@ const HomeLayout = ({children , languageProps}) => {
   `)
   
 var languageURL =languageProps.langURL;
-var urlPrefix = languageProps.URLPrefix;
-
-console.log("languageProps==>",languageProps);
-console.log("languageURL",languageURL);
-console.log("urlPrefix",urlPrefix);
-
-const En = urlPrefix+"/en/home/";
-const Fr = urlPrefix+"/fr/home/";
-const Hi=  urlPrefix+"/hi/home/";
+var homePage = languageProps.langURL+"home/";
 const about = languageURL+"about-us/"
+const langCode = languageProps.langcode;
 
  const companyName= data.site.siteMetadata.title;
     return (
@@ -34,7 +25,7 @@ const about = languageURL+"about-us/"
    
   
     <nav className="navbar navbar-light bg-primary d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ">
-    <a className="navbar-brand my-0 mr-md-auto  font-weight-normal text-white" href={urlPrefix }>{companyName}</a>
+    <a className="navbar-brand my-0 mr-md-auto  font-weight-normal text-white" href={homePage}>{companyName}</a>
     <ul className="nav nav-pills">
         <li className="nav-item"><a href={about} className="nav-link active"> About Us</a></li>
         <li className="nav-item"><a href="#" className="nav-link active">Products</a></li>
@@ -43,7 +34,7 @@ const about = languageURL+"about-us/"
          
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Language
+            Language ({langCode})
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
           <li className="dropdown-item"><a href="/en/home/" className="nav-link text-small">English</a></li>

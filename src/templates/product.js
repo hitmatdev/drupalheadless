@@ -1,14 +1,13 @@
 import React from "react"
 
 import HomeLayout from "../components/layouts/HomeLayout"
-import {getTranslation, getPath, getURLPath} from '../utils/linkUtils';
+import {getURLPath} from '../utils/linkUtils';
 
 const Products = ({ pageContext }) => {
   
   const languageProps = {"langcode" : pageContext.langcode, "langURL" : getURLPath()+"/"+pageContext.langcode+"/","URLPrefix":getURLPath()};
 
 
-  console.log("pageContext",pageContext);
     return (
       <HomeLayout languageProps ={languageProps}>
 

@@ -116,14 +116,14 @@ const urlPrefix = "";
   </div>
     
     <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">{getTranslation("products")}</h2>
+    <h2 className="pb-2 border-bottom">{getTranslation("products",pageContext.langcode)}</h2>
     <ProductList products={data.allNodeProducts}></ProductList>
 
 </div>
 
     
   <div className="container px-4 py-5">
-    <h2 className="pb-2 border-bottom">{getTranslation("meet_the_team")}</h2>
+    <h2 className="pb-2 border-bottom">{getTranslation("meet_the_team",pageContext.langcode)}</h2>
 
     <div className="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
       <div className="d-flex flex-column align-items-start gap-2">

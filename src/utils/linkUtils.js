@@ -1,7 +1,7 @@
 import { useLocation } from '@reach/router';
 import {i18nText } from './config';
 
-
+//Local storage functions are not used anymore
 const setLang = (event, lang) => 
 {
     if (typeof window !== 'undefined') 
@@ -66,6 +66,8 @@ const getLang = () =>
   
  };
 
+
+ //These two functions are in use only
  const getURLPath = () => 
  {
 
@@ -78,15 +80,12 @@ const getLang = () =>
   
  };
 
- const getTranslation = (key) => 
+ const getTranslation = (key, langcode) => 
  {
     if (typeof window !== 'undefined') 
     {
     
-    
-    var lang =  getLang();
-
-    const trans = i18nText[lang][key];
+    const trans = i18nText[langcode][key];
    
     return trans;
     }
@@ -95,6 +94,5 @@ const getLang = () =>
  };
 
 
-  const Language = getLang();
   
-  export {setLang, getLang, Language, getTranslation, getPath, getURLPath}
+  export {setLang, getLang,getTranslation, getPath, getURLPath}

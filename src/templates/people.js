@@ -7,7 +7,6 @@ const People = ({ pageContext }) => {
   
  const languageProps = {"langcode" : pageContext.langcode, "langURL" : getURLPath()+"/"+pageContext.langcode+"/","URLPrefix":getURLPath()};
 
-  console.log("pageContext",pageContext);
     return (
 
       <HomeLayout languageProps ={languageProps}>

@@ -22,9 +22,9 @@ console.log("languageProps==>",languageProps);
 console.log("languageURL",languageURL);
 console.log("urlPrefix",urlPrefix);
 
-const En = urlPrefix +"/en/home/";
-const Fr = urlPrefix +"/fr/home/";
-const Hi=  urlPrefix +"/hi/home/";
+const En = urlPrefix+"/en/home/";
+const Fr = urlPrefix+"/fr/home/";
+const Hi=  urlPrefix+"/hi/home/";
 const about = languageURL+"about-us/"
 
  const companyName= data.site.siteMetadata.title;
@@ -46,9 +46,9 @@ const about = languageURL+"about-us/"
             Language
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li className="dropdown-item"><a href={En} className="nav-link text-small">English</a></li>
-          <li className="dropdown-item"><a href={Fr} className="nav-link text-small">French </a></li>
-          <li className="dropdown-item"><a href={Hi} className="nav-link text-small" >Hindi (हिन्दी) </a></li>
+          <li className="dropdown-item"><a href="/en/home/" className="nav-link text-small">English</a></li>
+          <li className="dropdown-item"><a href="/fr/home/" className="nav-link text-small">French (Français)</a></li>
+          <li className="dropdown-item"><a href="/hi/home/" className="nav-link text-small" >Hindi (हिन्दी) </a></li>
 
 
  

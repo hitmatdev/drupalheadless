@@ -18,6 +18,8 @@ const HomeLayout = ({children , languageProps}) => {
 var languageURL =languageProps.langURL;
 var urlPrefix = languageProps.URLPrefix;
 
+console.log("languageProps==>",languageProps);
+
  const companyName= data.site.siteMetadata.title;
     return (
    

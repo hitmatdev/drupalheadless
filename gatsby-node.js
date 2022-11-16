@@ -3,6 +3,7 @@ const path = require('path')
 
 
 
+
 exports.createPages = async ({ graphql, actions }) => {
   
   
@@ -31,12 +32,14 @@ exports.createPages = async ({ graphql, actions }) => {
       nodes {
         field_people_slug
         langcode
+        id
       }
     }
     allNodeProducts {
       nodes {
         langcode
         field_product_slug
+        id
       }
     }
     allNodeInnerPage {
@@ -52,6 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw queryResult.errors
   }
 
+
   const { createRedirect } = actions
   createRedirect({ fromPath: '/', toPath: '/en/home/', isPermanent: true })
 
@@ -61,7 +65,10 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
       path: "/"+node.langcode+"/"+node.field_product_slug,
       component: ProductTemplate,
-      context: {langcode: node.langcode },
+      context: {langcode: node.langcode, id: node.id },
+
+
+
 
     })
   
@@ -72,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
       path: "/"+node.langcode+"/"+node.field_people_slug,
       component: PeopleTemplate,
-      context: {langcode: node.langcode },
+      context: {langcode: node.langcode , id : node.id},
 
     })
   
@@ -83,7 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
       path: "/"+node.langcode+"/"+node.field_slug,
       component: IndexTemplate,
-      context: {langcode: node.langcode },
+      context: {langcode: node.langcode , id : node.id},
 
     })
   

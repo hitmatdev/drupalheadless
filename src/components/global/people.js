@@ -24,6 +24,7 @@ return (
           </div>
           <h4 className="fw-semibold mb-0 text-center">{data.node.field_people_name}</h4>
           <p className="text-muted text-center">{data.node.field_people_title}</p>
+          <p className="text-center"><a href={"/"+data.node.langcode+"/"+data.node.field_people_slug} className="btn btn-outline-primary">{data.node.field_people_name}'s Bio</a></p>
         </div>
  
  )

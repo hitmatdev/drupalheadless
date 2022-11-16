@@ -15,6 +15,8 @@ const Products = ({ data, pageContext }) => {
     const ProdutImage = siteConfig.assetURL+data.allNodeProducts.edges[0].node.relationships.field_image_p.uri.url;
 
     console.log(ProductData);
+    console.log("languageProps product",languageProps);
+
 
     return (
       <HomeLayout languageProps ={languageProps}>

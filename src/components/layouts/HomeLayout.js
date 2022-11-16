@@ -18,6 +18,8 @@ const about = languageURL+"about-us/"
 const langCode = languageProps.langcode;
 var homePage ="/"+langCode+"/home/";
 
+console.log("languageURL",languageURL);
+console.log("about",about);
 
  const companyName= data.site.siteMetadata.title;
     return (

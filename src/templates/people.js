@@ -11,7 +11,7 @@ const People = ({ data, pageContext }) => {
   const PeopleData = data.allNodePeople.edges[0].node;
   const PeopleImage = siteConfig.assetURL+data.allNodePeople.edges[0].node.relationships.field_people_image.uri.url;
 
-
+ console.log("languageProps People",languageProps);
 
   return (
     <HomeLayout languageProps ={languageProps}>
@@ -25,7 +25,7 @@ const People = ({ data, pageContext }) => {
  <div className="col-lg-6">
    <h1 className="display-5 fw-bold lh-1 mb-3">  { PeopleData.field_people_name} </h1>
    <p className="lead">{PeopleData.field_people_title}</p>
-   <p className="text-muted"> {PeopleData.field_people_summary}</p>
+   <p className="text-muted">ss{PeopleData.field_people_summary}</p>
  
  </div>
 

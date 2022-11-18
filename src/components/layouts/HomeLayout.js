@@ -14,7 +14,7 @@ const HomeLayout = ({children , languageProps}) => {
   `)
   
 var languageURL =languageProps.langURL;
-const about = languageURL+"about-us/"
+var about = languageURL+"about-us/"
 const langCode = languageProps.langcode;
 var homePage ="/"+langCode+"/home/";
 

@@ -11,6 +11,7 @@ module.exports = {
     options: {
       "icon": "src/images/icon.png"
     },
+    
     resolve: `gatsby-source-drupal`,
     options: {
       baseUrl: `https://dev-dhcms.pantheonsite.io/`,
@@ -24,6 +25,9 @@ module.exports = {
         
       },
     },
+
+  
+    
   }]
 };
 

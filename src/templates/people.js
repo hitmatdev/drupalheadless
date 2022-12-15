@@ -25,13 +25,26 @@ const People = ({ data, pageContext }) => {
  <div className="col-lg-6">
    <h1 className="display-5 fw-bold lh-1 mb-3">  { PeopleData.field_people_name} </h1>
    <p className="lead">{PeopleData.field_people_title}</p>
-   <p className="text-muted">ss{PeopleData.field_people_summary}</p>
- 
+   <p className="text-success"> {PeopleData.field_people_qualification} </p>
+   <p className="text-muted">{PeopleData.field_people_summary}</p>
+   
  </div>
+
+
 
  <div className="col-10 col-sm-8 col-lg-6">
    <img src={PeopleImage}className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="300"  loading="lazy"/>
+
  </div>
+</div>
+
+<div className="card">
+  <div className="card-header">
+    <h3>News</h3>
+  </div>
+  <div className="card-body">
+  <p className="text-muted">{PeopleData.field_people_news}</p>
+  </div>
 </div>
 
 
@@ -56,6 +69,8 @@ query ($langcode : String, $id : String ){
           field_people_name
           field_people_title
           field_people_slug
+          field_people_qualification
+          field_people_news
           langcode
           
           field_people_summary

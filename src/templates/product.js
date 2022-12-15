@@ -24,12 +24,16 @@ const Products = ({ data, pageContext }) => {
     <div className="container">
    
 
-       
        <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
      
      <div className="col-lg-6">
        <h1 className="display-5 fw-bold lh-1 mb-3">  { ProductData.title} </h1>
        <p className="lead">{ProductData.body.value}</p>
+       <h1 className="display-5 fw-bold lh-1 mb-3">  Descriptions </h1>
+       <p className="lead">{ProductData.field_product_description}</p>
+
+       <h1 className="display-5 fw-bold lh-1 mb-3">  Results </h1>
+       <p className="lead">{ProductData.field_product_results}</p>
      
      </div>
 
@@ -60,6 +64,8 @@ export const query = graphql `
               field_cta
               field_tags_hcm
               field_product_slug
+              field_product_description
+              field_product_results
               langcode
               body {
                 value

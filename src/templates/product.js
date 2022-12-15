@@ -29,10 +29,10 @@ const Products = ({ data, pageContext }) => {
      <div className="col-lg-6">
        <h1 className="display-5 fw-bold lh-1 mb-3">  { ProductData.title} </h1>
        <p className="lead">{ProductData.body.value}</p>
-       <h1 className="display-5 fw-bold lh-1 mb-3">  Descriptions </h1>
+       <h3 className="display-7 lh-1 mb-8"> Description </h3>
        <p className="lead">{ProductData.field_product_description}</p>
 
-       <h1 className="display-5 fw-bold lh-1 mb-3">  Results </h1>
+       <h3>  Results </h3>
        <p className="lead">{ProductData.field_product_results}</p>
      
      </div>

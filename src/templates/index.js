@@ -86,6 +86,16 @@ query ($langcode: String) {
       }
     }
   }
+  allNodePressRelease(filter: {langcode: {eq: $langcode}}){
+    nodes {
+      langcode
+      field_press_slug
+      id
+      field_press_title
+      field_press_reference
+      field_press_date(fromNow: true)
+    }
+  }
 }`
 
 
@@ -106,8 +116,12 @@ const IndexPage = ({ data, pageContext }) => {
   const allNodeInnerPageData = data.allNodeInnerPage.edges[0].node;
 
   
-  const PageSection = allNodeInnerPageData.field_inner_section_title;
+ const PageSection = allNodeInnerPageData.field_inner_section_title;
  const PageSectionBody = allNodeInnerPageData.field_inner_section_body;
+
+const Press = data.allNodePressRelease.nodes; 
+
+console.log("Press",Press);
   
   return (
   <HomeLayout languageProps ={languageProps}>
@@ -181,11 +195,38 @@ const IndexPage = ({ data, pageContext }) => {
        
 <People people={data.allNodePeople}></People>    
     </div>
+
+    <h2 className="pb-2 border-bottom">Press Releases</h2>
+
+    <div >
+
+
+{Press.map((data, index) => {
+
+
+return (
+
+
+<div className="card mt-3">
+<div className="card-body">
+<p className="text-secondary">{data.field_press_title}</p>
+<p className="text-small text-info">{data.field_press_date} {data.field_press_reference} </p>
+<p><a href={"/"+data.langcode+"/"+data.field_press_slug} className="btn btn-outline-primary">More</a></p>
+</div>
+</div>
+
+)
+    })}
+
+    </div>
+
+
+
+
+
   </div>
 
-
-
-
+ 
 
 
   </HomeLayout>

@@ -30,7 +30,7 @@ console.log("daya",data);
      
       <div className="col-lg-6">
         <h1 className="display-5 fw-bold lh-1 mb-3"> { ProductData.title}</h1>
-        <p className="lead">{ProductData.body.value}</p>
+        <div dangerouslySetInnerHTML={ { __html: ProductData.body.value } }></div>
         <p> <span className="badge text-bg-info">{ProductData.field_product_results}</span>
 </p>
       </div>

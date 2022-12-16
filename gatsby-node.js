@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const AboutUsTemplate = path.resolve('src/templates/about-us.js')
   const IndexTemplate = path.resolve('src/templates/index.js')
+  const PressReleaseTemplate = path.resolve('src/templates/press-releases.js')
 
   
   
@@ -46,6 +47,13 @@ exports.createPages = async ({ graphql, actions }) => {
       nodes {
         langcode
         field_inner_slug
+      }
+    }
+    allNodePressRelease {
+      nodes {
+        langcode
+        field_press_slug
+        id
       }
     }
   }
@@ -106,10 +114,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   
   })
+  queryResult.data.allNodePressRelease.nodes.forEach((node) => 
+  { 
+  createPage({
+      path: "/"+node.langcode+"/"+node.field_press_slug,
+      component: PressReleaseTemplate,
+      context: { langcode: node.langcode , id : node.id},
+
+    })
+  
+  })
 
 
 }
-
 
 
 

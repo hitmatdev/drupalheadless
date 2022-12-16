@@ -1,8 +1,9 @@
 import React from "react"
 import HomeLayout from "../components/layouts/HomeLayout"
-import {getTranslation, getPath, getURLPath} from '../utils/linkUtils';
+import {getPath, getURLPath, getTranslation} from '../utils/linkUtils';
 import {siteConfig, Language}  from "../utils/config";
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import ProductList  from "../components/global/products";
 
 
 const People = ({ data, pageContext }) => {
@@ -49,6 +50,12 @@ const People = ({ data, pageContext }) => {
 
 
 </div>
+
+<div className="container px-4 py-5">
+    <h2 className="pb-2 border-bottom">{getTranslation("products",pageContext.langcode)}</h2>
+    <ProductList products={data.allNodeProducts}></ProductList>
+
+</div>
      
 
  
@@ -84,6 +91,28 @@ query ($langcode : String, $id : String ){
         }
       }
     }
+  allNodeProducts (filter: {langcode: {eq: $langcode}})  {
+      edges {
+        node {
+          id
+          title
+          field_cta
+          field_tags_hcm
+          field_product_slug
+          langcode
+          body {
+            value
+          }
+          relationships {
+            field_image_p {
+              uri {
+                url
+              }
+            }
+          }
+        }
+      }
+}
     
   }
 `

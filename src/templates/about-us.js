@@ -47,7 +47,7 @@ const AboutUs = ({ data, pageContext }) => {
 
   
 
-    <div className="p-5 mb-4 bg-light rounded-3">
+    <div className="p-5 mb-4 bg-primary text-white rounded-3">
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold col-md-8">{PageSection[0]}</h1>
         <p className="col-md-12 fs-4">{PageSectionBody[0]}</p>
@@ -56,18 +56,16 @@ const AboutUs = ({ data, pageContext }) => {
 
     <div className="row align-items-md-stretch">
       <div className="col-md-6">
-        <div className="h-100 p-5 bg-white border-0 rounded-3">
+        <div className="h-100 p-5 bg-primary text-white border-0 rounded-3">
           <h2>{PageSection[1]}</h2>
           <p>{PageSectionBody[1]}</p>
-          <button className="btn btn-outline-primary" type="button">Know More</button>
-        </div>
+          <button className="btn btn-outline-primary" type="button">{getTranslation("know_more",pageContext.langcode)}</button>        </div>
       </div>
       <div className="col-md-6">
-        <div className="h-100 p-5 bg-light border-0 rounded-3">
+        <div className="h-100 p-5 bg-primary text-white border-0 rounded-3">
           <h2>{PageSection[2]}</h2>
           <p>{PageSectionBody[2]}</p>
-          <button className="btn btn-outline-primary" type="button">Know More</button>
-        </div>
+          <button className="btn btn-outline-primary" type="button">{getTranslation("know_more",pageContext.langcode)}</button>        </div>
       </div>
     </div>
 
